@@ -7,8 +7,8 @@ WORKDIR /app
 # Sao chép file requirements.txt vào trước để tận dụng cache của Docker
 COPY requirements.txt .
 
-# Cài đặt các thư viện Python cần thiết
-RUN pip install --no-cache-dir -r requirements.txt
+# Cài đặt các thư viện Python cần thiết với thời gian chờ dài hơn
+RUN pip install --default-timeout=100 --no-cache-dir -r requirements.txt
 
 # Sao chép toàn bộ mã nguồn của ứng dụng vào thư mục làm việc
 COPY . .

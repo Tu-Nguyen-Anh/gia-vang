@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   gold-bot:
     # Xây dựng image từ Dockerfile trong thư mục hiện tại
@@ -8,4 +6,4 @@ services:
     container_name: gold_price_bot
     # Tự động khởi động lại container trừ khi bạn chủ động dừng nó
     restart: unless-stopped
-
+    # Chỉ định file chứa các biến môi trường
