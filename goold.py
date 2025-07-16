@@ -8,8 +8,8 @@ from telegram.ext import Application, CommandHandler, ContextTypes
 # --- CẤU HÌNH ---
 TELEGRAM_BOT_TOKEN = '7759170307:AAGRfrebGT7wxi7BYxRvw-AjykerhoHWhfI'  # Token của bạn
 TELEGRAM_CHAT_ID = '5882369573'  # THAY BẰNG CHAT ID CỦA BẠN
-DAILY_REPORT_HOUR = 17  # Giờ gửi báo cáo hàng ngày (24h format)
-DAILY_REPORT_MINUTE = 15  # Phút gửi báo cáo hàng ngày
+DAILY_REPORT_HOUR = 8  # Giờ gửi báo cáo hàng ngày (24h format)
+DAILY_REPORT_MINUTE = 1  # Phút gửi báo cáo hàng ngày
 
 # --- CẤU HÌNH API CAFEF ---
 CURRENT_PRICE_API_URL = 'https://cafef.vn/du-lieu/Ajax/ajaxgoldprice.ashx'
@@ -113,7 +113,7 @@ async def job_daily_report(context: ContextTypes.DEFAULT_TYPE) -> None:
     price = get_pnj_ring_price()
     if price:
         message = (
-            f"☀️ **Chào buổi tối! Giá {TARGET_GOLD_NAME} (Hà Nội) lúc {DAILY_REPORT_HOUR}:{DAILY_REPORT_MINUTE:02d}** ☀️\n"
+            f"☀️ **Chào ngày mới! Giá {TARGET_GOLD_NAME} (Hà Nội) lúc {DAILY_REPORT_HOUR}:{DAILY_REPORT_MINUTE:02d}** ☀️\n"
             f"------------------------------------\n"
             f"🔸 **Mua vào:** {price['buy']:.2f} triệu đồng/lượng\n"
             f"🔹 **Bán ra:** {price['sell']:.2f} triệu đồng/lượng\n\n"
