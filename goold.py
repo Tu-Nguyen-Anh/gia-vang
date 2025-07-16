@@ -6,13 +6,15 @@ from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
 # --- CẤU HÌNH ---
-TELEGRAM_BOT_TOKEN = '8006920644:AAEuh2OTO6fdgDN8h2Arnbqo7lUrkXlq8Oc' # Token của bạn
-TELEGRAM_CHAT_ID = '123456789' # THAY BẰNG CHAT ID CỦA BẠN
+TELEGRAM_BOT_TOKEN = '7759170307:AAGRfrebGT7wxi7BYxRvw-AjykerhoHWhfI'  # Token của bạn
+TELEGRAM_CHAT_ID = '5882369573'  # THAY BẰNG CHAT ID CỦA BẠN
+DAILY_REPORT_HOUR = 17  # Giờ gửi báo cáo hàng ngày (24h format)
+DAILY_REPORT_MINUTE = 15  # Phút gửi báo cáo hàng ngày
 
 # --- CẤU HÌNH API CAFEF ---
 CURRENT_PRICE_API_URL = 'https://cafef.vn/du-lieu/Ajax/ajaxgoldprice.ashx'
 RING_HISTORY_API_URL = 'https://cafef.vn/du-lieu/Ajax/AjaxGoldPriceRing.ashx'
-TARGET_GOLD_NAME = "NHẪN TRƠN PNJ 999.9" # Mục tiêu theo dõi
+TARGET_GOLD_NAME = "NHẪN TRƠN PNJ 999.9"  # Mục tiêu theo dõi
 
 REGIONS = {"hcm": "00", "hanoi": "11"}
 API_HEADERS = {
@@ -32,17 +34,15 @@ logger = logging.getLogger(__name__)
 
 def get_pnj_ring_price():
     """Hàm chuyên dụng để lấy giá Nhẫn Trơn PNJ từ API CafeF."""
-    # SỬA LỖI TẠI ĐÂY: Dùng đúng key "hanoi"
     params = {'index': REGIONS["hanoi"]}
     try:
         response = requests.get(CURRENT_PRICE_API_URL, params=params, headers=API_HEADERS)
         response.raise_for_status()
         price_list = response.json().get('Data', [])
         
-        # Tìm chính xác mục tiêu
         for item in price_list:
             if item.get('name', '').upper() == TARGET_GOLD_NAME:
-                # Trả về giá trị đã được làm sạch
+                logger.info(f"Tìm thấy giá {TARGET_GOLD_NAME}: Mua {item.get('buyPrice', 0)/100:.2f}, Bán {item.get('sellPrice', 0)/100:.2f}")
                 return {
                     "buy": item.get('buyPrice', 0) / 100,
                     "sell": item.get('sellPrice', 0) / 100
@@ -107,80 +107,107 @@ async def command_thirty_days(update: Update, context: ContextTypes.DEFAULT_TYPE
 # --- CÔNG VIỆC ĐỊNH KỲ (SCHEDULED JOB) ---
 
 async def job_daily_report(context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Gửi báo cáo giá Nhẫn Trơn PNJ hàng ngày vào 8h sáng."""
-    logger.info("Thực hiện job gửi tin 8h sáng")
+    """Gửi báo cáo giá Nhẫn Trơn PNJ hàng ngày vào giờ được cấu hình."""
+    current_time = datetime.now(VIETNAM_TZ).strftime('%Y-%m-%d %H:%M:%S')
+    logger.info(f"Thực hiện job gửi tin lúc {DAILY_REPORT_HOUR}:{DAILY_REPORT_MINUTE:02d} tại {current_time}")
     price = get_pnj_ring_price()
     if price:
         message = (
-            f"☀️ **Chào buổi sáng! Giá {TARGET_GOLD_NAME} (Hà Nội) lúc 8:00** ☀️\n"
+            f"☀️ **Chào buổi tối! Giá {TARGET_GOLD_NAME} (Hà Nội) lúc {DAILY_REPORT_HOUR}:{DAILY_REPORT_MINUTE:02d}** ☀️\n"
             f"------------------------------------\n"
             f"🔸 **Mua vào:** {price['buy']:.2f} triệu đồng/lượng\n"
             f"🔹 **Bán ra:** {price['sell']:.2f} triệu đồng/lượng\n\n"
             f"Gõ /n để cập nhật."
         )
-        await context.bot.send_message(context.job.chat_id, text=message, parse_mode='HTML')
+        try:
+            await context.bot.send_message(context.job.chat_id, text=message, parse_mode='HTML')
+            logger.info(f"Gửi tin nhắn lúc {DAILY_REPORT_HOUR}:{DAILY_REPORT_MINUTE:02d} thành công đến chat_id {context.job.chat_id}")
+        except Exception as e:
+            logger.error(f"Lỗi khi gửi tin nhắn lúc {DAILY_REPORT_HOUR}:{DAILY_REPORT_MINUTE:02d}: {e}")
+    else:
+        error_message = f"Không thể lấy được giá vàng vào lúc {DAILY_REPORT_HOUR}:{DAILY_REPORT_MINUTE:02d}."
+        try:
+            await context.bot.send_message(context.job.chat_id, text=error_message)
+            logger.error(error_message)
+        except Exception as e:
+            logger.error(f"Lỗi khi gửi thông báo lỗi lúc {DAILY_REPORT_HOUR}:{DAILY_REPORT_MINUTE:02d}: {e}")
 
 async def job_check_price_change(context: ContextTypes.DEFAULT_TYPE) -> None:
     """Job mới: Kiểm tra giá mỗi 30 phút và thông báo nếu có thay đổi."""
-    logger.info("Thực hiện job kiểm tra giá 30 phút")
+    current_time = datetime.now(VIETNAM_TZ).strftime('%Y-%m-%d %H:%M:%S')
+    logger.info(f"Thực hiện job kiểm tra giá 30 phút tại {current_time}")
     current_price = get_pnj_ring_price()
     if not current_price:
-        return # Bỏ qua nếu không lấy được giá
+        logger.warning("Không thể lấy giá vàng, bỏ qua kiểm tra thay đổi giá.")
+        try:
+            await context.bot.send_message(context.job.chat_id, text="Không thể lấy giá vàng để kiểm tra thay đổi.")
+        except Exception as e:
+            logger.error(f"Lỗi khi gửi thông báo lỗi kiểm tra giá: {e}")
+        return
 
-    previous_price = context.bot_data.get('last_pnj_price')
+    previous_price = context.bot_data.get('last_pnj_price', None)
     context.bot_data['last_pnj_price'] = current_price
 
-    if previous_price and (current_price['buy'] != previous_price['buy'] or current_price['sell'] != previous_price['sell']):
-        logger.info(f"Phát hiện giá thay đổi! Gửi thông báo.")
-        
+    if previous_price:
         buy_diff = current_price['buy'] - previous_price['buy']
         sell_diff = current_price['sell'] - previous_price['sell']
-        
-        buy_arrow = "🔼" if buy_diff > 0 else "🔽" if buy_diff < 0 else "➡️"
-        sell_arrow = "🔼" if sell_diff > 0 else "🔽" if sell_diff < 0 else "➡️"
-        
-        message = (
-            f"⚠️ **CẢNH BÁO GIÁ VÀNG NHẪN (HÀ NỘI)** ⚠️\n"
-            f"------------------------------------\n"
-            f"{buy_arrow} **Mua:** **{current_price['buy']:.2f}** ({buy_diff:+.2f})\n"
-            f"   (Trước đó: {previous_price['buy']:.2f})\n"
-            f"{sell_arrow} **Bán:** **{current_price['sell']:.2f}** ({sell_diff:+.2f})\n"
-            f"   (Trước đó: {previous_price['sell']:.2f})"
-        )
-        await context.bot.send_message(context.job.chat_id, text=message, parse_mode='Markdown')
+        # Chỉ thông báo nếu thay đổi lớn hơn 0.01 triệu đồng
+        if abs(buy_diff) >= 0.01 or abs(sell_diff) >= 0.01:
+            logger.info(f"Phát hiện giá thay đổi! Mua: {buy_diff:+.2f}, Bán: {sell_diff:+.2f}")
+            buy_arrow = "🔼" if buy_diff > 0 else "🔽" if buy_diff < 0 else "➡️"
+            sell_arrow = "🔼" if sell_diff > 0 else "🔽" if sell_diff < 0 else "➡️"
+            
+            message = (
+                f"⚠️ **CẢNH BÁO GIÁ VÀNG NHẪN (HÀ NỘI)** ⚠️\n"
+                f"------------------------------------\n"
+                f"{buy_arrow} **Mua:** **{current_price['buy']:.2f}** ({buy_diff:+.2f})\n"
+                f"   (Trước đó: {previous_price['buy']:.2f})\n"
+                f"{sell_arrow} **Bán:** **{current_price['sell']:.2f}** ({sell_diff:+.2f})\n"
+                f"   (Trước đó: {previous_price['sell']:.2f})"
+            )
+            try:
+                await context.bot.send_message(context.job.chat_id, text=message, parse_mode='Markdown')
+                logger.info(f"Gửi thông báo thay đổi giá thành công đến chat_id {context.job.chat_id}")
+            except Exception as e:
+                logger.error(f"Lỗi khi gửi thông báo thay đổi giá: {e}")
 
 # --- HÀM MAIN ĐỂ CHẠY BOT ---
 
 def main() -> None:
-    # ... (Phần này không thay đổi, tôi rút gọn để bạn tập trung vào phần sửa lỗi) ...
-    # ... (Bạn không cần sửa gì ở đây) ...
+    """Khởi động bot và lên lịch công việc."""
     if TELEGRAM_CHAT_ID == 'YOUR_CHAT_ID' or not TELEGRAM_CHAT_ID.isdigit():
-        logger.error("LỖI: TELEGRAM_CHAT_ID chưa được cấu hình.")
+        logger.error("LỖI: TELEGRAM_CHAT_ID chưa được cấu hình. Vui lòng cập nhật TELEGRAM_CHAT_ID.")
         return
 
-    application = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
-    job_queue = application.job_queue
+    try:
+        application = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
+        job_queue = application.job_queue
 
-    application.add_handler(CommandHandler("n", command_now))
-    application.add_handler(CommandHandler("t", command_thirty_days))
+        application.add_handler(CommandHandler("n", command_now))
+        application.add_handler(CommandHandler("t", command_thirty_days))
 
-    # Lên lịch gửi tin 8h sáng
-    job_queue.run_daily(
-        callback=job_daily_report,
-        time=time(hour=8, minute=0, second=0, tzinfo=VIETNAM_TZ),
-        chat_id=int(TELEGRAM_CHAT_ID)
-    )
-    
-    # Lên lịch kiểm tra giá mỗi 30 phút (1800 giây)
-    job_queue.run_repeating(
-        callback=job_check_price_change,
-        interval=1800,
-        first=10, # Chờ 10 giây sau khi khởi động để chạy lần đầu
-        chat_id=int(TELEGRAM_CHAT_ID)
-    )
-    
-    logger.info("Bot đã sẵn sàng và các công việc đã được lên lịch!")
-    application.run_polling()
+        # Lên lịch gửi tin hàng ngày
+        current_time = datetime.now(VIETNAM_TZ).strftime('%Y-%m-%d %H:%M:%S')
+        logger.info(f"Lên lịch job lúc {DAILY_REPORT_HOUR}:{DAILY_REPORT_MINUTE:02d} tại múi giờ {VIETNAM_TZ} (hiện tại: {current_time})")
+        job_queue.run_daily(
+            callback=job_daily_report,
+            time=time(hour=DAILY_REPORT_HOUR, minute=DAILY_REPORT_MINUTE, second=0, tzinfo=VIETNAM_TZ),
+            chat_id=int(TELEGRAM_CHAT_ID)
+        )
+        
+        # Lên lịch kiểm tra giá mỗi 30 phút
+        logger.info("Lên lịch job kiểm tra giá mỗi 30 phút")
+        job_queue.run_repeating(
+            callback=job_check_price_change,
+            interval=1800,
+            first=10,
+            chat_id=int(TELEGRAM_CHAT_ID)
+        )
+        
+        logger.info("Bot đã sẵn sàng và các công việc đã được lên lịch!")
+        application.run_polling()
+    except Exception as e:
+        logger.error(f"Lỗi khi khởi động bot: {e}")
 
 if __name__ == "__main__":
     main()
