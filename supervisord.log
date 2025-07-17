@@ -1,0 +1,11 @@
+2025-07-17 03:26:10,159 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-07-17 03:26:10,160 INFO supervisord started with pid 1
+2025-07-17 03:26:11,178 INFO spawned: 'gold_bot' with pid 7
+2025-07-17 03:26:11,180 INFO spawned: 'quedich_bot' with pid 8
+2025-07-17 03:26:12,321 INFO success: gold_bot entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-07-17 03:26:12,321 INFO success: quedich_bot entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-07-17 03:31:38,789 WARN received SIGTERM indicating exit request
+2025-07-17 03:31:38,791 INFO waiting for gold_bot, quedich_bot to die
+2025-07-17 03:31:39,653 INFO stopped: quedich_bot (exit status 0)
+2025-07-17 03:31:42,657 INFO waiting for gold_bot to die
+2025-07-17 03:31:43,556 INFO stopped: gold_bot (exit status 0)

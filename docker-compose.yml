@@ -3,7 +3,9 @@ services:
     # Xây dựng image từ Dockerfile trong thư mục hiện tại
     build: .
     # Đặt tên cho container để dễ quản lý
-    container_name: gold_price_bot
+    container_name: multi_function_bot
     # Tự động khởi động lại container trừ khi bạn chủ động dừng nó
     restart: unless-stopped
-    # Chỉ định file chứa các biến môi trường
+    # Bạn có thể thêm phần volumes nếu muốn file log hoặc state được lưu bên ngoài
+    volumes:
+      - .:/app
