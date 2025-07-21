@@ -1,0 +1,34 @@
+python: can't open file '/app/another_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/another_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/another_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/another_bot.py': [Errno 2] No such file or directory
+2025-07-21 03:56:26,030 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-21 03:56:26,030 - __main__ - INFO - Bot đã sẵn sàng và đang lắng nghe...
+2025-07-21 03:56:26,725 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/getMe "HTTP/1.1 200 OK"
+2025-07-21 03:56:26,939 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/deleteWebhook "HTTP/1.1 200 OK"
+2025-07-21 03:56:26,940 - apscheduler.scheduler - INFO - Added job "daily_que_job" to job store "default"
+2025-07-21 03:56:26,940 - apscheduler.scheduler - INFO - Scheduler started
+2025-07-21 03:56:26,940 - telegram.ext.Application - INFO - Application started
+2025-07-21 03:56:27,626 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/getUpdates "HTTP/1.1 200 OK"
+2025-07-21 03:56:27,629 - __main__ - INFO - TuNguyenAnhz mở menu chọn quẻ.
+2025-07-21 03:56:28,040 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/sendMessage "HTTP/1.1 200 OK"
+2025-07-21 03:56:28,042 - __main__ - INFO - TuNguyenAnhz mở menu chọn quẻ.
+2025-07-21 03:56:28,442 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/sendMessage "HTTP/1.1 200 OK"
+2025-07-21 03:56:35,681 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/getUpdates "HTTP/1.1 200 OK"
+2025-07-21 03:56:36,722 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-07-21 03:56:37,148 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/editMessageText "HTTP/1.1 200 OK"
+2025-07-21 03:56:39,557 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/getUpdates "HTTP/1.1 200 OK"
+2025-07-21 03:56:39,969 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-07-21 03:56:40,390 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/editMessageText "HTTP/1.1 200 OK"
+2025-07-21 03:56:41,354 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/getUpdates "HTTP/1.1 200 OK"
+2025-07-21 03:56:41,761 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-07-21 03:56:42,208 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/editMessageText "HTTP/1.1 200 OK"
+2025-07-21 03:56:42,695 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/sendMessage "HTTP/1.1 200 OK"
+2025-07-21 03:56:44,129 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/sendMessage "HTTP/1.1 200 OK"
+2025-07-21 03:56:45,570 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/sendMessage "HTTP/1.1 200 OK"
+2025-07-21 03:56:47,011 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/sendMessage "HTTP/1.1 200 OK"
+2025-07-21 03:56:48,447 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/sendMessage "HTTP/1.1 200 OK"
+2025-07-21 03:56:49,875 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/sendMessage "HTTP/1.1 200 OK"
+2025-07-21 03:56:51,312 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/sendMessage "HTTP/1.1 200 OK"
+2025-07-21 03:56:51,571 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/getUpdates "HTTP/1.1 200 OK"
+2025-07-21 03:57:01,792 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7198310816:AAGhM-YSpecOD37NgXHwrshdjIx-paJJwoA/getUpdates "HTTP/1.1 200 OK"

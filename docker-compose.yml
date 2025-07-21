@@ -1,5 +1,7 @@
+version: '3.8'
+
 services:
-  gold-bot:
+  multi-bot:
     # Xây dựng image từ Dockerfile trong thư mục hiện tại
     build: .
     # Đặt tên cho container để dễ quản lý
@@ -7,5 +9,6 @@ services:
     # Tự động khởi động lại container trừ khi bạn chủ động dừng nó
     restart: unless-stopped
     # Bạn có thể thêm phần volumes nếu muốn file log hoặc state được lưu bên ngoài
+    # Ví dụ: lưu log ra máy thật để dễ xem
     volumes:
-      - .:/app
+      - ./logs:/var/log/supervisor

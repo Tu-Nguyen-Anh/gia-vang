@@ -1,0 +1,40 @@
+2025-07-21 03:54:19,873 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-07-21 03:54:19,876 INFO supervisord started with pid 1
+2025-07-21 03:54:20,879 INFO spawned: 'another_bot' with pid 7
+2025-07-21 03:54:20,882 INFO spawned: 'gold_bot' with pid 8
+2025-07-21 03:54:20,884 INFO spawned: 'quedich_bot' with pid 9
+2025-07-21 03:54:20,908 WARN exited: another_bot (exit status 2; not expected)
+2025-07-21 03:54:20,913 WARN exited: quedich_bot (exit status 2; not expected)
+2025-07-21 03:54:22,222 INFO spawned: 'another_bot' with pid 11
+2025-07-21 03:54:22,227 INFO success: gold_bot entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-07-21 03:54:22,233 INFO spawned: 'quedich_bot' with pid 12
+2025-07-21 03:54:22,247 WARN exited: another_bot (exit status 2; not expected)
+2025-07-21 03:54:22,249 WARN exited: quedich_bot (exit status 2; not expected)
+2025-07-21 03:54:24,478 INFO spawned: 'another_bot' with pid 13
+2025-07-21 03:54:24,481 INFO spawned: 'quedich_bot' with pid 14
+2025-07-21 03:54:24,506 WARN exited: quedich_bot (exit status 2; not expected)
+2025-07-21 03:54:24,507 WARN exited: another_bot (exit status 2; not expected)
+2025-07-21 03:54:27,510 INFO spawned: 'another_bot' with pid 15
+2025-07-21 03:54:27,514 INFO spawned: 'quedich_bot' with pid 16
+2025-07-21 03:54:27,528 WARN exited: another_bot (exit status 2; not expected)
+2025-07-21 03:54:27,528 INFO gave up: another_bot entered FATAL state, too many start retries too quickly
+2025-07-21 03:54:27,528 WARN exited: quedich_bot (exit status 2; not expected)
+2025-07-21 03:54:28,530 INFO gave up: quedich_bot entered FATAL state, too many start retries too quickly
+2025-07-21 03:56:21,978 WARN received SIGTERM indicating exit request
+2025-07-21 03:56:21,978 INFO waiting for gold_bot to die
+2025-07-21 03:56:23,850 INFO stopped: gold_bot (exit status 0)
+2025-07-21 03:56:24,470 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-07-21 03:56:24,473 INFO supervisord started with pid 1
+2025-07-21 03:56:25,475 INFO spawned: 'another_bot' with pid 7
+2025-07-21 03:56:25,477 INFO spawned: 'gold_bot' with pid 8
+2025-07-21 03:56:25,478 INFO spawned: 'quedich_bot' with pid 9
+2025-07-21 03:56:25,496 WARN exited: quedich_bot (exit status 2; not expected)
+2025-07-21 03:56:26,726 INFO success: another_bot entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-07-21 03:56:26,726 INFO success: gold_bot entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2025-07-21 03:56:26,729 INFO spawned: 'quedich_bot' with pid 12
+2025-07-21 03:56:26,771 WARN exited: quedich_bot (exit status 2; not expected)
+2025-07-21 03:56:29,444 INFO spawned: 'quedich_bot' with pid 13
+2025-07-21 03:56:29,458 WARN exited: quedich_bot (exit status 2; not expected)
+2025-07-21 03:56:32,462 INFO spawned: 'quedich_bot' with pid 14
+2025-07-21 03:56:32,474 WARN exited: quedich_bot (exit status 2; not expected)
+2025-07-21 03:56:33,475 INFO gave up: quedich_bot entered FATAL state, too many start retries too quickly
