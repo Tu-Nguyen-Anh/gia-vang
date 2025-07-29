@@ -42,10 +42,13 @@ def get_pnj_ring_price():
         
         for item in price_list:
             if item.get('name', '').upper() == TARGET_GOLD_NAME:
-                logger.info(f"Tìm thấy giá {TARGET_GOLD_NAME}: Mua {item.get('buyPrice', 0)/100:.2f}, Bán {item.get('sellPrice', 0)/100:.2f}")
+                # Chia cho 10 để chuyển từ triệu đồng/lượng sang triệu đồng/chỉ
+                buy_price_per_chi = item.get('buyPrice', 0) / 1000  # 100 (original division) * 10 (tael to chi)
+                sell_price_per_chi = item.get('sellPrice', 0) / 1000 # 100 (original division) * 10 (tael to chi)
+                logger.info(f"Tìm thấy giá {TARGET_GOLD_NAME}: Mua {buy_price_per_chi:.2f}, Bán {sell_price_per_chi:.2f}")
                 return {
-                    "buy": item.get('buyPrice', 0) / 100,
-                    "sell": item.get('sellPrice', 0) / 100
+                    "buy": buy_price_per_chi,
+                    "sell": sell_price_per_chi
                 }
         logger.warning(f"Không tìm thấy '{TARGET_GOLD_NAME}' trong dữ liệu API.")
         return None
@@ -79,7 +82,7 @@ async def command_now(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
             f"------------------------------------\n"
             f"Mua vào: **{price['buy']:.2f}**\n"
             f"Bán ra: **{price['sell']:.2f}**\n"
-            f"_Đơn vị: triệu đồng/lượng_"
+            f"_Đơn vị: triệu đồng/chỉ_" # Đã thay đổi đơn vị
         )
         await update.message.reply_markdown(message)
     else:
@@ -93,12 +96,13 @@ async def command_thirty_days(update: Update, context: ContextTypes.DEFAULT_TYPE
     if not history:
         await update.message.reply_text("Không thể lấy được dữ liệu lịch sử.")
         return
-    report_lines = [f"📊 **Báo cáo giá Nhẫn Trơn PNJ 999.9 (Hà Nội)** 📊\n"]
+    report_lines = [f"📊 **Báo cáo giá Nhẫn Trơn PNJ 999.9 (Hà Nội) - Đơn vị: triệu đồng/chỉ** 📊\n"] # Đã thay đổi đơn vị
     for item in history:
         try:
             date_str = datetime.fromisoformat(item['lastUpdated'].replace(' ', 'T')).strftime('%d/%m')
-            buy_price = f"{item.get('buyPrice', 0) / 100:.2f}"
-            sell_price = f"{item.get('sellPrice', 0) / 100:.2f}"
+            # Chia cho 10 để chuyển từ triệu đồng/lượng sang triệu đồng/chỉ
+            buy_price = f"{item.get('buyPrice', 0) / 1000:.2f}" # 100 (original division) * 10 (tael to chi)
+            sell_price = f"{item.get('sellPrice', 0) / 1000:.2f}" # 100 (original division) * 10 (tael to chi)
             report_lines.append(f"`{date_str}`: Mua **{buy_price}** - Bán **{sell_price}**")
         except (ValueError, KeyError): continue
     full_report = "\n".join(report_lines)
@@ -115,8 +119,8 @@ async def job_daily_report(context: ContextTypes.DEFAULT_TYPE) -> None:
         message = (
             f"☀️ **Chào ngày mới! Giá {TARGET_GOLD_NAME} (Hà Nội) lúc {DAILY_REPORT_HOUR}:{DAILY_REPORT_MINUTE:02d}** ☀️\n"
             f"------------------------------------\n"
-            f"🔸 **Mua vào:** {price['buy']:.2f} triệu đồng/lượng\n"
-            f"🔹 **Bán ra:** {price['sell']:.2f} triệu đồng/lượng\n\n"
+            f"🔸 **Mua vào:** {price['buy']:.2f} triệu đồng/chỉ\n" # Đã thay đổi đơn vị
+            f"🔹 **Bán ra:** {price['sell']:.2f} triệu đồng/chỉ\n\n" # Đã thay đổi đơn vị
             f"Gõ /n để cập nhật."
         )
         try:
@@ -151,8 +155,8 @@ async def job_check_price_change(context: ContextTypes.DEFAULT_TYPE) -> None:
     if previous_price:
         buy_diff = current_price['buy'] - previous_price['buy']
         sell_diff = current_price['sell'] - previous_price['sell']
-        # Chỉ thông báo nếu thay đổi lớn hơn 0.01 triệu đồng
-        if abs(buy_diff) >= 0.01 or abs(sell_diff) >= 0.01:
+        # Chỉ thông báo nếu thay đổi lớn hơn 0.001 triệu đồng (tương đương 0.01 triệu đồng/lượng)
+        if abs(buy_diff) >= 0.001 or abs(sell_diff) >= 0.001: # Đã điều chỉnh ngưỡng thay đổi
             logger.info(f"Phát hiện giá thay đổi! Mua: {buy_diff:+.2f}, Bán: {sell_diff:+.2f}")
             buy_arrow = "🔼" if buy_diff > 0 else "🔽" if buy_diff < 0 else "➡️"
             sell_arrow = "🔼" if sell_diff > 0 else "🔽" if sell_diff < 0 else "➡️"
@@ -163,7 +167,8 @@ async def job_check_price_change(context: ContextTypes.DEFAULT_TYPE) -> None:
                 f"{buy_arrow} **Mua:** **{current_price['buy']:.2f}** ({buy_diff:+.2f})\n"
                 f"   (Trước đó: {previous_price['buy']:.2f})\n"
                 f"{sell_arrow} **Bán:** **{current_price['sell']:.2f}** ({sell_diff:+.2f})\n"
-                f"   (Trước đó: {previous_price['sell']:.2f})"
+                f"   (Trước đó: {previous_price['sell']:.2f})\n"
+                f"_Đơn vị: triệu đồng/chỉ_" # Đã thay đổi đơn vị
             )
             try:
                 await context.bot.send_message(context.job.chat_id, text=message, parse_mode='Markdown')

@@ -6,3 +6,73 @@ python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or direc
 python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
 python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
 python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+python: can't open file '/app/kinh_dich_bot.py': [Errno 2] No such file or directory
+2025-07-25 09:21:59,273 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-07-25 09:21:59,273 - __main__ - INFO - Bot đã sẵn sàng và đang lắng nghe...
+2025-07-25 09:21:59,989 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/getMe "HTTP/1.1 200 OK"
+2025-07-25 09:22:00,254 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/deleteWebhook "HTTP/1.1 200 OK"
+2025-07-25 09:22:00,257 - apscheduler.scheduler - INFO - Added job "daily_que_job" to job store "default"
+2025-07-25 09:22:00,257 - apscheduler.scheduler - INFO - Scheduler started
+2025-07-25 09:22:00,258 - telegram.ext.Application - INFO - Application started
+2025-07-25 09:22:01,755 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/getUpdates "HTTP/1.1 200 OK"
+2025-07-25 09:22:01,762 - __main__ - INFO - TuNguyenAnhz mở menu chọn quẻ.
+2025-07-25 09:22:02,294 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/sendMessage "HTTP/1.1 200 OK"
+2025-07-25 09:22:02,295 - __main__ - INFO - TuNguyenAnhz mở menu chọn quẻ.
+2025-07-25 09:22:02,766 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/sendMessage "HTTP/1.1 200 OK"
+2025-07-25 09:22:02,767 - __main__ - INFO - TuNguyenAnhz mở menu chọn quẻ.
+2025-07-25 09:22:03,188 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/sendMessage "HTTP/1.1 200 OK"
+2025-07-25 09:22:03,191 - __main__ - INFO - TuNguyenAnhz mở menu chọn quẻ.
+2025-07-25 09:22:03,602 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/sendMessage "HTTP/1.1 200 OK"
+2025-07-25 09:22:03,603 - __main__ - INFO - TuNguyenAnhz mở menu chọn quẻ.
+2025-07-25 09:22:04,017 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/sendMessage "HTTP/1.1 200 OK"
+2025-07-25 09:22:04,018 - __main__ - INFO - TuNguyenAnhz mở menu chọn quẻ.
+2025-07-25 09:22:04,417 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/sendMessage "HTTP/1.1 200 OK"
+2025-07-25 09:22:04,418 - __main__ - INFO - TuNguyenAnhz mở menu chọn quẻ.
+2025-07-25 09:22:04,820 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/sendMessage "HTTP/1.1 200 OK"
+2025-07-25 09:22:04,821 - __main__ - INFO - TuNguyenAnhz mở menu chọn quẻ.
+2025-07-25 09:22:05,241 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/sendMessage "HTTP/1.1 200 OK"
+2025-07-25 09:22:05,244 - __main__ - INFO - TuNguyenAnhz mở menu chọn quẻ.
+2025-07-25 09:22:05,671 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/sendMessage "HTTP/1.1 200 OK"
+2025-07-25 09:22:07,470 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/getUpdates "HTTP/1.1 200 OK"
+2025-07-25 09:22:07,859 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-07-25 09:22:08,259 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/editMessageText "HTTP/1.1 200 OK"
+2025-07-25 09:22:08,670 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/sendMessage "HTTP/1.1 200 OK"
+2025-07-25 09:22:10,082 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/sendMessage "HTTP/1.1 200 OK"
+2025-07-25 09:22:11,501 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/sendMessage "HTTP/1.1 200 OK"
+2025-07-25 09:22:12,912 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/sendMessage "HTTP/1.1 200 OK"
+2025-07-25 09:22:14,374 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/sendMessage "HTTP/1.1 200 OK"
+2025-07-25 09:22:15,792 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/sendMessage "HTTP/1.1 200 OK"
+2025-07-25 09:22:17,193 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/sendMessage "HTTP/1.1 200 OK"
+2025-07-25 09:22:17,714 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/getUpdates "HTTP/1.1 200 OK"
+2025-07-25 09:22:27,982 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/getUpdates "HTTP/1.1 200 OK"
+2025-07-25 09:22:38,240 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/getUpdates "HTTP/1.1 200 OK"
+2025-07-25 09:22:48,485 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/getUpdates "HTTP/1.1 200 OK"
+2025-07-25 09:22:58,730 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/getUpdates "HTTP/1.1 200 OK"
+2025-07-25 09:23:08,992 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/getUpdates "HTTP/1.1 200 OK"
+2025-07-25 09:23:19,673 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7913917084:AAHihvPMk4AuxoUsX37xmQjT0L4LXsBK3g4/getUpdates "HTTP/1.1 200 OK"
+2025-07-25 09:23:19,673 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
+2025-07-25 09:23:19,673 - apscheduler.scheduler - INFO - Scheduler has been shut down
+2025-07-25 09:23:19,684 - telegram.ext.Application - INFO - Application.stop() complete
